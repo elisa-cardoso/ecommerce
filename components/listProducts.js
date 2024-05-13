@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import { getAllProducts, storeProducts } from "../services/appService";
+import { deleteProduct, getAllProducts, storeProducts } from "../services/appService";
 import { useNavigation } from "@react-navigation/native";
 
 export default function ListProducts() {
@@ -26,10 +26,12 @@ export default function ListProducts() {
   const navigation = useNavigation();
 
   const handleEditProduct = ( item ) => {
-
     navigation.navigate('EditProduct', { item });
   };
 
+  const handleDeleteProduct = ( token ) => {
+    deleteProduct( token )   
+  }
 
   return (
     <View style={styles.container}>
@@ -49,6 +51,7 @@ export default function ListProducts() {
                 <Text>{item.name}</Text>
                 <Text>{item.price}</Text>
                 <Button title='Editar' onPress={() => handleEditProduct(item)}/>
+                <Button title= 'Deletar' onPress={() => handleDeleteProduct( item.id )} />
               </View>
             </View>
           </TouchableOpacity>

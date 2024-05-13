@@ -10,7 +10,6 @@ const authenticate = async (mode, email, password) => {
       password: password,
       returnSecureToken: true,
     });
-    //console.log(response.data);
     return response.data;
   } catch (err) {
     console.log(err);

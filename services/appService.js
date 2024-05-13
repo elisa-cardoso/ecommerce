@@ -39,3 +39,11 @@ export const updateProduct = async (token, item) => {
     }
 };
 
+export const deleteProduct = async (token) => {
+    try {
+        const response = await api.delete(`/products/${token}.json`)
+        console.log(response)
+    } catch(err) {
+        console.log("ERRO: ", err)
+    }
+}
